@@ -1,0 +1,35 @@
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.img1 {
+  position: absolute;
+  width: 700px;
+  height: 524px;
+  left: 437px;
+  top: 200px;
+}
+
+.navbar-brand {
+  color: white !important;
+}
+
+.navbar .navbar-nav li a {
+  color: white !important;
+}
+
+.form-group {
+  margin-bottom: 0.25rem !important;
+}
+
+#home {
+  padding: 60px;
+  width: 100%;
+}
+
+#form_container {
+  position: absolute;
+  right: 20px;
+  padding: 1rem;
+}

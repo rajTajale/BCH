@@ -1,0 +1,75 @@
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+body{
+  overflow-y: hidden;
+}
+
+.profile-container {
+  position: absolute;
+  width: 19%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  background-color: #536dfe;
+  overflow-y: hidden;
+}
+
+.profile-pic {
+  position: absolute;
+  width: 152px;
+  height: 153px;
+  left: 44px;
+  top: 82px;
+  border-radius: 50%;
+  background: white;
+}
+
+.pp {
+  position: absolute;
+  width: 89px;
+  height: 95px;
+  left: 35px;
+  top: 32px;
+}
+
+.user-content{
+  height: 100%;
+  overflow-y: hidden;
+  width: 71%;
+  position: absolute;
+  left: 19%;
+}
+
+.logo{
+  position: absolute;
+  left: 15px;
+  top: 8px;
+
+
+}
+
+#services{
+  list-style-type: none;
+  color: white;
+  font-family: 'Open Sans', sans-serif ;
+  display: flex;
+  flex-direction: column;
+  line-height: 40px;
+
+}
+
+.user-profile-options{
+  position: fixed;
+  height: 500px;
+  width: 19%;
+  top: 300px;
+}
+
+#services li span{
+  position: fixed;
+  left: 80px;
+
+
+
+
+}

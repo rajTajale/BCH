@@ -3,49 +3,55 @@
 session_start();
 
 //initailizing the variables
-$firstName = "";
-$lastName = "";
-$telephone = "";
+$FirstName = "";
+$LastName = "";
+$Phone = "";
+$Gender = "";
+$Password ="";
 
+
+//array for storing all the validation errors
 $errors = array();
+
 
 //connecting to SQLiteDatabase
 
-$db = mysqli_connect('localhost','detoxx','','members_bch') or die("Couldn't connect to the database");
+$db = mysqli_connect('localhost','detoxx','','hospital') or die("Couldn't connect to the database");
 
 //registering the users
 if(isset($_POST['register_user'])) {
 
-  $firstName = mysqli_real_escape_string($db, $_POST['firstName']);
-  $lastName = mysqli_real_escape_string($db, $_POST['lastName']);
-  $telephone = mysqli_real_escape_string($db, $_POST['telephone']);
-  $password = mysqli_real_escape_string($db, $_POST['password']);
+  $FirstName = mysqli_real_escape_string($db, $_POST['FirstName']);
+  $LastName = mysqli_real_escape_string($db, $_POST['LastName']);
+  $Phone = mysqli_real_escape_string($db, $_POST['Phone']);
+  $Gender = mysqli_real_escape_string($db, $_POST['Gender']);
+  $Password = mysqli_real_escape_string($db, $_POST['Password']);
 
   //form validation
 
-  if(empty($firstName)){
+  if(empty($FirstName)){
     array_push($errors, "First Name is required.");
   }
-  if(empty($lastName)){
+  if(empty($LastName)){
     array_push($errors, "Last Name is required.");
   }
-  if(empty($telephone)){
+  if(empty($Phone)){
     array_push($errors, "Contact number is required.");
   }
 
-  if(empty($password)){
+  if(empty($Password)){
     array_push($errors, "Password is required.");
   }
 
   //checking the database for existing user with Same first Name and Last Name
 
-  $telephone_check_query = "SELECT * FROM reg_user WHERE telephone = '$telephone' LIMIT 1";
-  $results = mysqli_query($db, $telephone_check_query);
+  $Phone_check_query = "SELECT * FROM PATIENT WHERE Phone = '$Phone' LIMIT 1";
+  $results = mysqli_query($db, $Phone_check_query);
   $user = mysqli_fetch_assoc($results);
 
   if($user){
-    if($user['telephone'] === $telephone){
-      array_push($errors,"User already exists.");
+    if($user['Phone'] === $Phone){
+      array_push($errors, "User already exists.");
     }
   }
 
@@ -54,10 +60,10 @@ if(isset($_POST['register_user'])) {
 
   if(count($errors) == 0){
 
-    $query = "INSERT INTO reg_user (firstName, lastName, telephone, password) VALUES ('$firstName', '$lastName', '$telephone', '$password')";
+    $query = "INSERT INTO PATIENT (FirstName, LastName, Phone, Gender, Password) VALUES ('$FirstName', '$LastName', '$Phone','$Gender', '$Password')";
 
     mysqli_query($db, $query);
-    $_SESSION['telephone'] = $telephone;
+    $_SESSION['Phone'] = $Phone;
     $_SESSION['success'] = "You are now logged in.";
     header("location:bch_index.php");
 
@@ -69,28 +75,27 @@ if(isset($_POST['register_user'])) {
 //logging in the users
 
 if(isset($_POST['login_user'])) {
+  $Phone = mysqli_real_escape_string($db, $_POST['Phone']);
+  $Password = mysqli_real_escape_string($db, $_POST['Password']);
 
-  $telephone = mysqli_real_escape_string($db, $_POST['telephone']);
-  $password = mysqli_real_escape_string($db, $_POST['password']);
-
-  if(empty($telephone)){
+  if(empty($Phone)){
     array_push($errors, "Contact number is required.");
   }
 
-  if(empty($password)){
+  if(empty($Password)){
     array_push($errors, "Password is required.");
   }
 
 
   if(count($errors) == 0){
 
-    $query = "SELECT * FROM reg_user WHERE telephone = '$telephone' AND password = '$password'";
+    $query = "SELECT * FROM PATIENT WHERE Phone = '$Phone' AND Password = '$Password'";
     $results = mysqli_query($db, $query);
 
 
     if(mysqli_num_rows($results) == 1) {
 
-      $_SESSION['telephone'] = $telephone;
+      $_SESSION['Phone'] = $Phone;
       $_SESSION['success'] = "Succesfully logged in.";
       header("location:bch_index.php");
 
@@ -98,7 +103,9 @@ if(isset($_POST['login_user'])) {
       array_push($errors, "Wrong telephone number or password. Please try again.");
     }
   }
-
 }
 
-?>
+
+
+  
+  

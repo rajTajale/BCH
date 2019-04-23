@@ -20,9 +20,10 @@
       <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #405DE6;">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">Bhaktapur Cancer Hospital</a>
+            <img class="logo" src="images/hospital.svg" width="30" height="30" alt="">
+            <a class="navbar-brand" style="margin-left: 20px;" href="#">Bhaktapur Cancer Hospital</a>
           </div>
-          <ul style="float: right !important;" class="nav navbar-nav">
+          <ul id="topBotomBordersOut" style="float: right !important;" class="nav navbar-nav">
             <li><a href="bch_login.php">Home</a></li>
             <li><a href="#">Appointment</a></li>
             <li><a href="#">Services</a></li>
@@ -41,12 +42,12 @@
             <form action="bch_login.php" method="post">
               <?php include('bch_errors.php') ?>
               <div class="form-group">
-                <label for="telephone"></label>
-                <input type="number" name="telephone" class="form-control" id="telephone" placeholder="Phone Number">
+                <label for="Phone"></label>
+                <input type="number" name="Phone" class="form-control" id="Phone" placeholder="Phone Number">
               </div>
               <div class="form-group">
-                <label for="password"></label>
-                <input type="password" name="password" class="form-control" id="pwd" placeholder="Password">
+                <label for="Password"></label>
+                <input type="Password" name="Password" class="form-control" id="pwd" placeholder="Password">
               </div>
               <div class="checkbox">
                 <label><input type="checkbox"> Remember me</label>

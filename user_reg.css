@@ -10,7 +10,33 @@ body {
   left: 52px;
   top: 260px;
 }
+#topBotomBordersOut li a:before,
+#topBotomBordersOut li a:after {
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  content: "";
+  opacity: 0;
+  transition: all 0.3s;
+}
 
+#topBotomBordersOut li a:before {
+  top: 6px;
+  transform: translateY(10px);
+}
+
+#topBotomBordersOut li a:after {
+  bottom: 6px;
+  transform: translateY(-10px);
+}
+
+#topBotomBordersOut li a:hover:before,
+#topBotomBordersOut li a:hover:after {
+  opacity: 1;
+  transform: translateY(0px);
+}
 .navbar-brand {
   color: white !important;
 }
@@ -32,4 +58,9 @@ body {
   position: absolute;
   right: 20px;
   padding: 1rem;
+}
+select {
+  line-height: 1rem;
+  margin: 10px 10px 0 0;
+  width: 200px;
 }
